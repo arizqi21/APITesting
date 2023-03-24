@@ -17,7 +17,7 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-response = WS.sendRequestAndVerify(findTestObject('API/Reqres.in/getUserData', [('id') : 23]))
+response = WS.sendRequestAndVerify(findTestObject('API/Reqres.in/getUserDataAPI/getUserData', [('id') : 23]))
 
 WS.verifyResponseStatusCode(response, 404)
 

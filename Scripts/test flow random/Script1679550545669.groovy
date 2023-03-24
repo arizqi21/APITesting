@@ -19,9 +19,9 @@ import org.openqa.selenium.Keys as Keys
 
 WS.sendRequest(findTestObject('API/Reqres.in/create user API/createUser'))
 
-WS.sendRequest(findTestObject('API/Reqres.in/getUserData'))
+WS.sendRequest(findTestObject('API/Reqres.in/getUserDataAPI/getUserData'))
 
-WS.sendRequest(findTestObject('API/Reqres.in/updateUserData'))
+WS.sendRequest(findTestObject('API/Reqres.in/updateUserDataAPI/updateUserData'))
 
 WS.sendRequest(findTestObject('API/Reqres.in/getUserListAPI/getUserList'))
 

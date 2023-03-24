@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
-   <description></description>
-   <name>getUserData</name>
+   <description>reqres.in API testing</description>
+   <name>getUserList</name>
    <tag></tag>
-   <elementGuidId>032c34e6-0bc0-4bb4-abee-e0b28565bf96</elementGuidId>
+   <elementGuidId>296844c5-6bcb-4d48-9532-720c63bf9953</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
    <connectionTimeout>-1</connectionTimeout>
@@ -15,7 +15,7 @@
    <maxResponseSize>-1</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
    <restRequestMethod>GET</restRequestMethod>
-   <restUrl>https://reqres.in/api/users/${id}</restUrl>
+   <restUrl>https://reqres.in/api/users?page=1</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
@@ -24,13 +24,6 @@
    <soapServiceFunction></soapServiceFunction>
    <socketTimeout>-1</socketTimeout>
    <useServiceInfoFromWsdl>true</useServiceInfoFromWsdl>
-   <variables>
-      <defaultValue>2</defaultValue>
-      <description>user's ID</description>
-      <id>bbf76d1e-15bd-42cd-954c-4685b872ca6e</id>
-      <masked>false</masked>
-      <name>id</name>
-   </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 
 import com.kms.katalon.core.testobject.RequestObject
@@ -43,6 +36,15 @@ import internal.GlobalVariable as GlobalVariable
 
 RequestObject request = WSResponseManager.getInstance().getCurrentRequest()
 
-ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()</verificationScript>
+ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
+
+
+WS.verifyResponseStatusCode(response, 200)
+
+assertThat(response.getStatusCode()).isEqualTo(200)
+
+assertThat(response.getStatusCode()).isIn(Arrays.asList(200, 201, 202))
+
+WS.verifyElementPropertyValue(response, 'data[1].first_name', 'Lindsay')</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>

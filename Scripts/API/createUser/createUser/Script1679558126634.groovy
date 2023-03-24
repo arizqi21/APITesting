@@ -17,11 +17,15 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WS.sendRequest(findTestObject('API/Reqres.in/create user API/createUser'))
+response = WS.sendRequestAndVerify(findTestObject('API/Reqres.in/createUserAPI/createUser', [('name') : 'john', ('job') : 'clerk']))
 
-WS.sendRequest(findTestObject('API/Reqres.in/getUserData'))
+'validate the status code\r\n'
+WS.verifyResponseStatusCode(response, 201)
 
-WS.sendRequest(findTestObject('API/Reqres.in/updateUserData'))
+String jsonSchema = '\n\n{\n\t"$id": "https://example.com/person.schema.json",\n  \t"$schema": "https://json-schema.org/draft/2020-12/schema",\n  \t"title": "user",\n  \t"type": "object",\n  \t"properties": {\n\t\t"name": {\n\t     \t"type": "string",\n\t      \t"description": "The person\'s first name."\n\t    },\n\t    "job": {\n\t      \t"type": "string",\n\t      \t"description": "The person\'s job."\n\t    },\n\t\t"id": {\n\t\t\t"type": "string",\n\t\t\t"description": "The Id of the user."\n\t\t},\n\t    "createdAt": {\n\t      \t"type": "string",\n\t\t\t"description": "Date creation of the data."\n\t    }\n\t},\n    "required": [\n        "name",\n        "job"\n    ]\n}\n\n'
 
-WS.sendRequest(findTestObject('API/Reqres.in/getUserListAPI/getUserList'))
+'validate the response content'
+validation = WS.validateJsonAgainstSchema(response, jsonSchema)
+
+WS.verifyElementsCount(response, '', 4)
 

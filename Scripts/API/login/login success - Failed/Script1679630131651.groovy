@@ -17,13 +17,11 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WS.sendRequest(findTestObject('API/Reqres.in/userList'))
+request = WS.sendRequestAndVerify(findTestObject('API/Reqres.in/login API/login - Failed'))
 
-response = WS.sendRequestAndVerify(findTestObject('API/Reqres.in/userList'))
+WS.verifyResponseStatusCode(request, 400)
 
-WS.verifyElementPropertyValue(response, 'data[1].first_name', 'Lindsay')
+String jsonSchema = '\r\n{\r\n\t"$id": "https://example.com/person.schema.json",\r\n  \t"$schema": "https://json-schema.org/draft/2020-12/schema",\r\n  \t"title": "user",\r\n  \t"type": "object",\r\n  \t"properties": {\r\n\t\t"error": {\r\n\t     \t"type": "string",\r\n\t      \t"description": "showing the error message."\r\n\t    }\r\n\t}\r\n}\r\n\r\n'
 
-WS.verifyElementsCount(response, 'data', 5)
-
-WS.verifyElementPropertyValue(response, 'data[2].id', 9)
+WS.validateJsonAgainstSchema(request, jsonSchema)
 

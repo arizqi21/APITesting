@@ -17,11 +17,7 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WS.sendRequest(findTestObject('API/Reqres.in/create user API/createUser'))
+response = WS.sendRequestAndVerify(findTestObject('API/Reqres.in/getUserData', [('id') : 23]))
 
-WS.sendRequest(findTestObject('API/Reqres.in/getUserData'))
-
-WS.sendRequest(findTestObject('API/Reqres.in/updateUserData'))
-
-WS.sendRequest(findTestObject('API/Reqres.in/getUserListAPI/getUserList'))
+WS.verifyResponseStatusCode(response, 404)
 

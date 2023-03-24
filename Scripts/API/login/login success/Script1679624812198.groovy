@@ -17,11 +17,11 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WS.sendRequest(findTestObject('API/Reqres.in/create user API/createUser'))
+request = WS.sendRequestAndVerify(findTestObject('API/Reqres.in/login API/login', [('username') : GlobalVariable.username]))
 
-WS.sendRequest(findTestObject('API/Reqres.in/getUserData'))
+WS.verifyResponseStatusCode(request, 200)
 
-WS.sendRequest(findTestObject('API/Reqres.in/updateUserData'))
+String jsonSchema = '\n{\n\t"$id": "https://example.com/person.schema.json",\n  \t"$schema": "https://json-schema.org/draft/2020-12/schema",\n  \t"title": "user",\n  \t"type": "object",\n  \t"properties": {\n\t\t"token": {\n\t     \t"type": "string",\n\t      \t"description": "the token for login."\n\t    }\n\t}\n}\n\n'
 
-WS.sendRequest(findTestObject('API/Reqres.in/getUserListAPI/getUserList'))
+WS.validateJsonAgainstSchema(request, jsonSchema)
 

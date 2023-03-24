@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>failed on finding the user data</description>
+   <name>get user data failed</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>d4b5d75a-00a4-48cd-9ae7-f4f9b7dc807e</testCaseGuid>
+</TestCaseEntity>

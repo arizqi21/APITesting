@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
-   <description></description>
-   <name>updateUser</name>
+   <description>API for creating user</description>
+   <name>createUser</name>
    <tag></tag>
-   <elementGuidId>02ba77ce-f3d2-4e43-8142-beaba1da953c</elementGuidId>
+   <elementGuidId>9cee0721-3de1-4e3a-8c35-5e42561784e4</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
    <connectionTimeout>-1</connectionTimeout>
    <followRedirects>false</followRedirects>
    <httpBody></httpBody>
    <httpBodyContent>{
-  &quot;text&quot;: &quot;{\n    \&quot;name\&quot;: \&quot;morpheus\&quot;,\n    \&quot;job\&quot;: \&quot;zion resident\&quot;\n}&quot;,
-  &quot;contentType&quot;: &quot;text/plain&quot;,
+  &quot;text&quot;: &quot;{\n    \&quot;name\&quot;: \&quot;john\&quot;,\n    \&quot;job\&quot;: \&quot;clerk\&quot;\n}&quot;,
+  &quot;contentType&quot;: &quot;application/json&quot;,
   &quot;charset&quot;: &quot;UTF-8&quot;
 }</httpBodyContent>
    <httpBodyType>text</httpBodyType>
@@ -21,13 +21,13 @@
       <name>Content-Type</name>
       <type>Main</type>
       <value>application/json</value>
-      <webElementGuid>f9a3a6b3-c124-44de-b15b-0bc551d16d4e</webElementGuid>
+      <webElementGuid>861d45c8-3bba-4ddd-9c1a-2f67e7d3f468</webElementGuid>
    </httpHeaderProperties>
    <katalonVersion>8.5.5</katalonVersion>
    <maxResponseSize>-1</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
-   <restRequestMethod>PUT</restRequestMethod>
-   <restUrl>https://reqres.in/api/users/2</restUrl>
+   <restRequestMethod>POST</restRequestMethod>
+   <restUrl>https://reqres.in/api/users</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
@@ -36,6 +36,13 @@
    <soapServiceFunction></soapServiceFunction>
    <socketTimeout>-1</socketTimeout>
    <useServiceInfoFromWsdl>true</useServiceInfoFromWsdl>
+   <variables>
+      <defaultValue>'clerk'</defaultValue>
+      <description></description>
+      <id>26fbfa5d-9071-4aeb-9330-9adda7bf1000</id>
+      <masked>false</masked>
+      <name>job</name>
+   </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 
 import com.kms.katalon.core.testobject.RequestObject
